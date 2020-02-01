@@ -1,3 +1,30 @@
 .list-group-item {
   line-height: 2.5;
 }
+.container {
+  text-align: center;
+  margin-left: 30%;
+  grid-template:
+  [row1-start] "header header header" 25px [row1-end]
+  [row2-start] "footer footer footer" 25px [row2-end]
+  / auto 50px auto;
+  justify-content: center;
+}
+
+
+.card-img-top {
+  padding: 20px;
+  
+}
+
+.col-xs {
+  padding: 20px;
+}
+.row {
+  text-align: center;
+}
+.card {
+  
+  border: 3px ridge rgba(23,7,11,0.9);
+  
+}
