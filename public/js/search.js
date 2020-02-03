@@ -9,10 +9,7 @@ function randomShuffle(array) {
 
 $(document).ready(function() {
 
-function gameStart() {
 
-
-}
 
 $("#play").on("click", function() {
 $("#image").empty();
@@ -47,12 +44,13 @@ $("#image").empty();
 
         var column = $("<div class='col-xs'>").appendTo(currentRow);
         var card = $("<div class='card' style='width: 10rem;'>").appendTo(column);
-        $("<img src='" + result + "' class='card-img-top' style='width: 10rem;height: 10rem;'>").appendTo(card);
-        
+        $("<img src='images/logo.png' data-url='" + result + "' class='card-img-top game-card' style='width: 10rem;height: 10rem;'>").appendTo(card);
         currentRowSize++;
     }
-    
-        
+
+    $(".game-card").on("click", function() {
+        $(this).attr("src", $(this).data("url"));
+    });
 
   });
 
