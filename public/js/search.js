@@ -1,3 +1,4 @@
+
 function randomShuffle(array) {
     for (i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * i)
@@ -8,8 +9,16 @@ function randomShuffle(array) {
 }
 
 $(document).ready(function () {
+    var timer = new easytimer.Timer();
+    timer.addEventListener('secondsUpdated', function (e) {
+        $('#basicUsage').html(timer.getTimeValues().toString());
+    });
+
     $("#play").on("click", function () {
         $("#image").empty();
+        timer.reset();
+        timer.start();
+
         var searchResult = $("#searchField").val().trim();
         var queryURL = "https://www.googleapis.com/customsearch/v1?q=" + searchResult + "&cx=017582625438444294087%3Aly6xfvmxhni&filter=1&imgSize=medium&imgType=photo&num=8&searchType=image&start=1&key=AIzaSyAHj9i08kkTs-82kUdXILGLyRmX3Fwfzro"
 
@@ -37,6 +46,8 @@ $(document).ready(function () {
             var click1 = true;
             var click1Flipper;
             var click1Result;
+            var clickCount = 0;
+            
 
             for (i = 0; i < photoUrls.length; i++) {
                 var result = photoUrls[i];
@@ -55,7 +66,10 @@ $(document).ready(function () {
             }
 
 
+
             $(".game-card").on("click", function () {
+                
+
                 // Disable clicks while handling stuff to prevent double clicks.
                 $(".game-card").addClass("no-clicks");
 
@@ -74,8 +88,11 @@ $(document).ready(function () {
                     click1 = false;
                     $(".game-card").removeClass("no-clicks");
                 } else {
+                    clickCount++;
+                    console.log(clickCount);
                     if (click1Result == imageUrl) {
-                        console.log("its a match");
+                        Notiflix.Notify.Success('Oh Yeesss! Its a Match!');
+
                         click1Flipper.children("img").off("click");
                         flipper.children("img").off("click");
                         $(".game-card").removeClass("no-clicks");
@@ -83,7 +100,11 @@ $(document).ready(function () {
 
                         if (count == 8) {
                             // This shows  win crap
-                            console.log("You Win!!!")
+
+                            console.log("Its a win!")
+                            console.log(timer.getTimeValues().toString());
+                            timer.stop();
+                            
 
                             // Display the fireworks
                             $("#fireworks-overlay").css("display", "block");
@@ -96,9 +117,9 @@ $(document).ready(function () {
                                 // Here you can display whatever you want for reset game.
                             }, 5000);
                         }
-                    
+
                     } else {
-                        console.log("you suck");
+                        Notiflix.Notify.Failure('Keep trying ...');
                         setTimeout(function () {
                             click1Flipper.toggleClass("is-flipped");
                             flipper.toggleClass("is-flipped");

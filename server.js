@@ -11,6 +11,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use('/easytimer', express.static(__dirname + '/node_modules/easytimer.js/dist/'));
 
 // Handlebars
 app.engine(
