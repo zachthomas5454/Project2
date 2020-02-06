@@ -11,9 +11,9 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/search", function(req, res) {
+  app.get("/search/:userId", function(req, res) {
      
-      res.render("search")
+      res.render("search", {userId: req.params.userId})
     
   });
 

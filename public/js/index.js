@@ -1,5 +1,4 @@
 var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
@@ -12,6 +11,17 @@ var API = {
       },
       type: "POST",
       url: "api/examples",
+      data: JSON.stringify(example)
+    });
+  },
+
+  updateExample: function(example) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/search",
       data: JSON.stringify(example)
     });
   },
@@ -62,23 +72,27 @@ var refreshExamples = function() {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
+  console.log("submit");
 
   var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+    userId: $exampleText.val().trim(),
+    
   };
 
-  if (!(example.text && example.description)) {
+  if (!(example.userId)) {
     alert("You must enter an example text and description!");
     return;
   }
 
   API.saveExample(example).then(function() {
     refreshExamples();
+    window.location.href = "/search/" + example.userId;
   });
 
+  
+
   $exampleText.val("");
-  $exampleDescription.val("");
+  
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked

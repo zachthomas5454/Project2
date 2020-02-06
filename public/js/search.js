@@ -1,4 +1,39 @@
-
+var API = {
+    saveExample: function(example) {
+      return $.ajax({
+        headers: {
+          "Content-Type": "application/json"
+        },
+        type: "POST",
+        url: "api/examples",
+        data: JSON.stringify(example)
+      });
+    },
+  
+    updateExample: function(example) {
+      return $.ajax({
+        headers: {
+          "Content-Type": "application/json"
+        },
+        type: "POST",
+        url: "api/search",
+        data: JSON.stringify(example)
+      });
+    },
+    getExamples: function() {
+      return $.ajax({
+        url: "api/examples",
+        type: "GET"
+      });
+    },
+    deleteExample: function(id) {
+      return $.ajax({
+        url: "api/examples/" + id,
+        type: "DELETE"
+      });
+    }
+  };
+  
 function randomShuffle(array) {
     for (i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * i)
@@ -15,7 +50,10 @@ $(document).ready(function () {
     });
 
     $("#play").on("click", function () {
+        $("#header").hide();
         $("#image").empty();
+        $(".input-group").hide();
+        $("#play").hide();
         timer.reset();
         timer.start();
 
@@ -59,7 +97,7 @@ $(document).ready(function () {
                 var column = $("<div class='col-xs'>").appendTo(currentRow);
                 var card = $("<div class='card' style='width: 10rem; height: 10rem;'>").appendTo(column);
                 var flipperDiv = $("<div class='flipper'>").appendTo(card)
-                $("<img src='images/logo.png' class='card-img-top game-card front' style='width: 10rem;height: 10rem;'>").appendTo(flipperDiv);
+                $("<img src='/images/logo.png' class='card-img-top game-card front' style='width: 10rem;height: 10rem;'>").appendTo(flipperDiv);
                 $("<img src='" + result + "' class='card-img-top game-card back' style='width: 10rem;height: 10rem;'>").appendTo(flipperDiv);
 
                 currentRowSize++;
@@ -89,6 +127,7 @@ $(document).ready(function () {
                     $(".game-card").removeClass("no-clicks");
                 } else {
                     clickCount++;
+                    $("#scoreClick").html(clickCount);
                     console.log(clickCount);
                     if (click1Result == imageUrl) {
                         Notiflix.Notify.Success('Oh Yeesss! Its a Match!');
@@ -114,8 +153,13 @@ $(document).ready(function () {
                                 // Hide the fireworks
                                 $("#fireworks-overlay").css("display", "none");
 
+                                API.updateExample({userId: userId, timeScore: timer.getTimeValues().toString(), clickScore: clickCount});
+                                
+                                restart(); //PRINT STATS AND OFFER TO GO TO THE 1ST PAGE AGAIN
+
                                 // Here you can display whatever you want for reset game.
                             }, 5000);
+
                         }
 
                     } else {
@@ -135,6 +179,14 @@ $(document).ready(function () {
 
         });
 
-
+        function restart() {
+            $("#header").show();
+            $("#image").empty();
+            $(".input-group").show();
+            $("#play").show();
+            timer.stop();
+            $("#scoreClick").html(0);
+    
+        }
     });
 });

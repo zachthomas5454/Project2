@@ -1,14 +1,17 @@
-
-<h1> Lets start playing</h1>
-
+<div id="basicUsage">00:00:00</div>
+<div id="scoreClick">Clicks: </div>
+<div id = "header"><img src="/images/logo2.png" id = "logo" height="150" width="200">
+<h1>eMatch...</h1></div>
 <div class="input-group mb-3">
   <input type="text" class="form-control" id = "searchField" placeholder="Enter your eMatch theme here" aria-describedby="button-addon2">
   <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button" id="play">Let's Play</button>
+    <button class="btn btn-outline-secondary" id="play" type="button" >Let's Play</button>
   </div>
 </div>
+<script>
+  var userId = "{{ userId }}";
+</script>
 
-<div id="basicUsage">00:00:00</div>
 
 <div class = "container" id = "image"></div>
 
@@ -26,9 +29,9 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/search.js"></script>
-<link rel="stylesheet" href="../../public/styles/style.css">
+
 <link rel="stylesheet" href="js/notiflix-1.9.1.min.css"/>
-<script src="js/notiflix-1.9.1.min.js"></script>
+<script src="/js/notiflix-1.9.1.min.js"></script>
 
 
 
