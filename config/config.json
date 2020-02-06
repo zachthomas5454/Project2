@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "eMatch_db",
+    "database": "eMatchdb",
     "host": "localhost",
     "dialect": "mysql"
   },

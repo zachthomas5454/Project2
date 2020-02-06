@@ -9,7 +9,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     avatar: {
     type: DataTypes.BLOB,
-    allowNull:false
+    allowNull:true
+    },
+    timeScore: {
+      type:DataTypes.TIME,
+      allowNull: true
+    },
+    clickScore: {
+      type: DataTypes.INTEGER,
+      allowNull:true
     }
   });
   return User;
