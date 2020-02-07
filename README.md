@@ -5,6 +5,7 @@
 - Players pick a topic of their choice, whether it be a TV Show, Movie or Celebrity, to be quized on
 - Players must solve the game before the timer reaches zero
 - Player to complete the game in the shortest amount of time will take the champion spot
+<br>
 **Requirements**
 * Must use a Node and Express Web Server
 * Must be backed by a MySQL Database with a Sequelize ORM
