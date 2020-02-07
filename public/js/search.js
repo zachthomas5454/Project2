@@ -44,6 +44,7 @@ function randomShuffle(array) {
 }
 
 $(document).ready(function () {
+    $("#")
     var timer = new easytimer.Timer();
     timer.addEventListener('secondsUpdated', function (e) {
         $('#basicUsage').html(timer.getTimeValues().toString());
@@ -154,7 +155,7 @@ $(document).ready(function () {
                                 $("#fireworks-overlay").css("display", "none");
 
                                 API.updateExample({userId: userId, timeScore: timer.getTimeValues().toString(), clickScore: clickCount});
-                                
+                                console.log(API.userId, API.timeScore, API.clickCount);
                                 restart(); //PRINT STATS AND OFFER TO GO TO THE 1ST PAGE AGAIN
 
                                 // Here you can display whatever you want for reset game.

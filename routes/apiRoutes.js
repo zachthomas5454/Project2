@@ -23,6 +23,23 @@ module.exports = function(app) {
     });
   });
 
+  app.put("/api/userUpdate", function(req, res) {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.User.update({
+      text: req.body.text,
+      complete: req.body.complete
+    }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbTodo) {
+      res.render(dbUser);
+    });
+  });
+
+
+
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
