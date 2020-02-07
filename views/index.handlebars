@@ -1,43 +1,26 @@
-<img src="images/logo2.png" id = "logo" height="150" width="200">
+<img src="images/logo2.png" id="logo" height="150" width="200">
 <h1>eMatch...</h1>
 <br>
 <br>
-<h1 id = "description"> ..is a fun, interactive matching game</h1>
-           
+<h1 id="description"> ..is a fun, interactive matching game</h1>
+
 <br>
 <div>
-  <p id = "username">Enter your username to start playing <br>
-  ***Username must be at least 10 characters***</p>
-    <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="User Name Here">
+  <p id="username">Enter your username to start playing</p>
+  <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+    placeholder="User Name Here">
+  <button id="submit" class="btn btn-primary float-right">Submit</button>
 </div>
-  <div class="form-group">
-    <br>
-    <p>Select your avatar below and click submit!</p>
-  </div>  
-    
-    <div class="input-group mb-3">
-      <select class="custom-select" id="inputGroupSelect02">
-        <option selected>Avatar Images</option>
-        <option value="<!--->populate avatar images here</-->">One</option>
-        <option value="<!--->populate avatar images here</-->">Two</option>
-        <option value="<!--->populate avatar images here</-->">Three</option>
-        <option value="<!--->populate avatar images here</-->">Four</option>
-        <option value="<!--->populate avatar images here</-->">Five</option>
-        <option value="<!--->populate avatar images here</-->">Six</option>
-        <option value="<!--->populate avatar images here</-->">Seven</option>
-        <option value="<!--->populate avatar images here</-->">Eight</option>
-        <option value="<!--->populate avatar images here</-->">Nine</option>
-        <option value="<!--->populate avatar images here</-->">Ten</option>
-        </select>
-      <div class="input-group-append"></div>
-        
-        <button id="submit" class="btn btn-primary float-right"> Submit</button>
-   </div>
-  </div>
-</div>
-      </div>
-    </div>
-  </div>
-</div>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+
+}</script>
 <script src="/js/index.js"></script>
+
+<script type="text/javascript">
+ function imgchange(e)
+   {
+      $("#imgs").attr('src',URL.createObjectURL(e.target.files[0]));
+  } 
+</script>

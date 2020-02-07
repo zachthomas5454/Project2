@@ -5,7 +5,7 @@ var API = {
           "Content-Type": "application/json"
         },
         type: "POST",
-        url: "api/examples",
+        url: "/api/examples",
         data: JSON.stringify(example)
       });
     },
@@ -15,20 +15,21 @@ var API = {
         headers: {
           "Content-Type": "application/json"
         },
-        type: "POST",
-        url: "api/search",
+        type: "PUT",
+        url: "/api/search",
         data: JSON.stringify(example)
       });
     },
     getExamples: function() {
       return $.ajax({
-        url: "api/examples",
-        type: "GET"
-      });
+        url: "/api/examples",
+        type: "GET",
+        async: false,
+      }).responseJSON;
     },
     deleteExample: function(id) {
       return $.ajax({
-        url: "api/examples/" + id,
+        url: "/api/examples/" + id,
         type: "DELETE"
       });
     }
@@ -44,11 +45,15 @@ function randomShuffle(array) {
 }
 
 $(document).ready(function () {
-    $("#")
+  $("#statsContainer").hide();
+  $("#statsHeader").hide();
+    $("#userId").html(userId);
     var timer = new easytimer.Timer();
     timer.addEventListener('secondsUpdated', function (e) {
         $('#basicUsage').html(timer.getTimeValues().toString());
     });
+
+    Notiflix.Notify.Init({position: "top-left", distance: "40px"});
 
     $("#play").on("click", function () {
         $("#header").hide();
@@ -63,7 +68,6 @@ $(document).ready(function () {
 
         $.ajax({
             url: queryURL,
-            method: "GET"
         }).then(function (response) {
             console.log(response);
             var photoUrls = [];
@@ -140,9 +144,8 @@ $(document).ready(function () {
 
                         if (count == 8) {
                             // This shows  win crap
-
+                            var userTime = timer.getTimeValues().toString();
                             console.log("Its a win!")
-                            console.log(timer.getTimeValues().toString());
                             timer.stop();
                             
 
@@ -154,12 +157,11 @@ $(document).ready(function () {
                                 // Hide the fireworks
                                 $("#fireworks-overlay").css("display", "none");
 
-                                API.updateExample({userId: userId, timeScore: timer.getTimeValues().toString(), clickScore: clickCount});
-                                console.log(API.userId, API.timeScore, API.clickCount);
-                                restart(); //PRINT STATS AND OFFER TO GO TO THE 1ST PAGE AGAIN
+                                API.updateExample({userId: userId, timeScore: userTime, clickScore: clickCount});
+                                printStats(); //PRINT STATS AND OFFER TO GO TO THE 1ST PAGE AGAIN
 
                                 // Here you can display whatever you want for reset game.
-                            }, 5000);
+                            }, 3000);
 
                         }
 
@@ -180,13 +182,26 @@ $(document).ready(function () {
 
         });
 
-        function restart() {
-            $("#header").show();
-            $("#image").empty();
-            $(".input-group").show();
-            $("#play").show();
+        function printStats() {
+            $("#header").hide();
+            $("#image").hide();
+            $(".input-group").hide();
+            $("#play").hide();
             timer.stop();
             $("#scoreClick").html(0);
+            $("#statsHeader").show();
+            $("#statsContainer").show();
+            console.log(API.getExamples());
+            var data = API.getExamples();
+            for (i = 0; i < data.length; i++) {
+              var row = $("<tr>");
+              $("<td>" + data[i].userId + "</td>").appendTo(row);
+              $("<td>" + data[i].timeScore + "</td>").appendTo(row);
+              $("<td>" + data[i].clickScore + "</td>").appendTo(row);
+              row.appendTo($("#statsTable"));
+              console.log(row);
+            }
+
     
         }
     });

@@ -1,22 +1,35 @@
 <div id="basicUsage">00:00:00</div>
-<input type="text" class="form-control" id = "inputTimer" placeholder="timer" aria-label="timer" aria-describedby="addon-wrapping"></div>
-<input type="text" class="form-control" id = "inputClicks" placeholder="clicks" aria-label="clicks" aria-describedby="addon-wrapping"></div>
 <div id="scoreClick">Clicks: </div>
-<div id = "header"><img src="/images/logo2.png" id = "logo" height="150" width="200">
-<h1>eMatch...</h1></div>
+<div id="player">You are playing as: <span id = "userId"></span></div>
+<div id = "header">
+  <img src="/images/logo2.png" id = "logo" height="150" width="200">
+  <h1>eMatch...</h1>
+</div>
 <div class="input-group mb-3">
   <input type="text" class="form-control" id = "searchField" placeholder="Enter your eMatch theme here" aria-describedby="button-addon2">
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" id="play" type="button" >Let's Play</button>
   </div>
 </div>
-<script>
-  var userId = "{{ userId }}";
-</script>
 
+<p id = "statsHeader">Compare your stats<p>
+<div class = "container" id = "statsContainer">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Time</th>
+        <th scope="col">Clicks</th>
+      </tr>
+    </thead>
+    <tbody id="statsTable">
+
+    </tbody>
+  </table>
+<a class="btn btn-primary" href="/" role="button">Go Back To Start</a>
+</div>
 
 <div class = "container" id = "image"></div>
-
 
 <div id="fireworks-overlay">
   <div class="pyro">
@@ -29,14 +42,11 @@
     var timerInstance = new easytimer.Timer();
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/search.js"></script>
+<script>
+  var userId = "{{ userId }}";
+</script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="js/notiflix-1.9.1.min.css"/>
 <script src="/js/notiflix-1.9.1.min.js"></script>
-
-
-
-                    
-
-
+<script src="/js/search.js"></script>

@@ -3,13 +3,6 @@ module.exports = function(sequelize, DataTypes) {
     userId: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      len: [10]
-    }
-    },
-    avatar: {
-    type: DataTypes.BLOB,
-    allowNull:true
     },
     timeScore: {
       type:DataTypes.TIME,
