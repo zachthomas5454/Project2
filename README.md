@@ -23,7 +23,7 @@ Game ends with 8 sets of completion
 ![](/public/images/readme6.png)
 Score is showing and can restart to have a better score
 ​
-**Front-End Technology**
+## Front-End Technology ##
 * CSS
 * HTML
 * Javascript
@@ -31,7 +31,7 @@ Score is showing and can restart to have a better score
 * JSON
 * NPM
 ​
-**Back-End Technology**
+## back-End Technology ##
 * MySQL Database with Sequelize ORM
 * GET and POST routes for retrieving and adding new Data
 * Heroku (with Data)
@@ -39,7 +39,7 @@ Score is showing and can restart to have a better score
 * Node.js
 * Express.js
 ​
-**Future Additions**
+## Future Additions ##
 For a future advance, two major things can be added:
 * Avatar image: we would like to have the avatar image showing for the players to choose
 * Database: we would like to include two databases (username and score) instead of one and have them connect to each other. When players are restarting, they are able to keeptrack of the name they used and the score they got.
