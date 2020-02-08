@@ -1,19 +1,45 @@
-# Project2
-**eMatch**
+# Project 2- eMatch Game 
+**Firuza, Shirley, Honora, Zachariah**
 <br>
-- An interactive memory game where players can compete with other users in real time
-- Players pick a topic of their choice, whether it be a TV Show, Movie or Celebrity, to be quized on
-- Players must solve the game before the timer reaches zero
-- Player to complete the game in the shortest amount of time will take the champion spot
-**Requirements**
-* Must use a Node and Express Web Server
-* Must be backed by a MySQL Database with a Sequelize ORM
-* Must have both GET and POST routes for retrieving and adding new data
-* Must be deployed using Heroku (with Data)
-* Must utilize at least one new library, package, or technology that we haven't discussed
-* Must have a polished frontend / UI
-* Must have folder structure that meets MVC Paradigm
-* Must meet good quality coding standards (indentation, scoping, naming)
-* Must not expose sensitive API key information on the server, see Protecting-API-Keys-In-Node.md
-
-
+This is an interactive memory game that players can compete with others in real-time. Players are asked to pick their username and avatar to start the game. Players are able to search their interested field, topic to play with. Once the players enter their choice, the timer will automatically start and their moves will start to be counted. The times and numbers of moves will be recorded to be ranked. 
+​
+## Getting Started ##
+​
+![](public/images/readme1.jpg)
+Layout and information flow
+​
+![](/public/images/readme2.png)
+Create a Username  
+​
+![](/public/images/readme3.png)
+Topic Search Page
+​
+![](/public/images/readme4.png)
+Game starts with timer and clicks showing
+​
+![](/public/images/readme5.png)
+Game ends with 8 sets of completion 
+​
+![](/public/images/readme6.png)
+Score is showing and can restart to have a better score
+​
+**Front-End Technology**
+* CSS
+* HTML
+* Javascript
+* JQuery
+* JSON
+* NPM
+​
+**Back-End Technology**
+* MySQL Database with Sequelize ORM
+* GET and POST routes for retrieving and adding new Data
+* Heroku (with Data)
+* API (google Images)
+* Node.js
+* Express.js
+​
+**Future Additions**
+For a future advance, two major things can be added:
+* Avatar image: we would like to have the avatar image showing for the players to choose
+* Database: we would like to include two databases (username and score) instead of one and have them connect to each other. When players are restarting, they are able to keeptrack of the name they used and the score they got.
