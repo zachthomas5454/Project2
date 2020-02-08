@@ -1,5 +1,5 @@
 var db = require("../models");
-
+const { Op } = require("sequelize");
 module.exports = function(app) {
   // Get all users
   app.get("/api/examples", function(req, res) {
@@ -8,6 +8,14 @@ module.exports = function(app) {
         ['clickScore', 'ASC'],
       ],
       limit: 10,
+    where: {
+      timeScore: {[
+        Op.ne]: null
+      },
+      clickScore: {[
+        Op.ne]: null
+      },
+    }
     }).then(function(eMatch) {
       res.json(eMatch);
     });
