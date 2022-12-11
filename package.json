@@ -13,7 +13,7 @@
   "dependencies": {
     "dotenv": "^8.0.0",
     "easytimer.js": "^4.1.1",
-    "express": "^4.17.0",
+    "express": "^4.17.3",
     "express-handlebars": "^3.1.0",
     "mysql2": "^1.6.5",
     "notiflix": "^1.9.1",
